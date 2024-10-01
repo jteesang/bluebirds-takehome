@@ -1,5 +1,15 @@
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
+## Demo Video
+https://drive.google.com/file/d/1FKXQzAnTVrCs7Rdv6xSh2DudySEXY0ig/view?usp=sharing
+
+
+## Add Environment Variables To Run Locally
+```
+NEXT_PUBLIC_SUPABASE_URL=
+NEXT_PUBLIC_SUPABASE_ANON_KEY=
+```
+
 ## Getting Started
 
 First, run the development server:
