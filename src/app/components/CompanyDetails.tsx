@@ -1,10 +1,15 @@
 // Sidebar.js
 import React, { useState } from 'react';
-import { Person } from '../types';
+import { Person, Company } from '../types';
 import PersonDetails from './PersonDetails';
 import ArrowRight from './ArrowRight';
 
-const Sidebar = ({ company, onClose }) => {
+interface SidebarProps {
+  company: Company;
+  onClose: () => void;
+}
+
+const Sidebar: React.FC<SidebarProps> = ({ company , onClose }) => {
   if (!company) return null;
   const [error, setError] = useState('')
   const [persons, setPersons] = useState<Person>();
@@ -20,8 +25,10 @@ const Sidebar = ({ company, onClose }) => {
       const data = await res.json();
       setPersons(data);
       setShowPersons(true);
-    } catch (err) {
+    } catch (err: unknown) {
+      if (err instanceof Error) {
         setError(err.message);
+      }
     } 
   }
 
@@ -51,7 +58,7 @@ const Sidebar = ({ company, onClose }) => {
         <p><strong>Industry:</strong> {company.industry}</p>
         <p><strong>Employees:</strong> {company.num_employees_on_linkedin}</p>
         <button onClick={handleViewPersons} className="mt-4 bg-blue-500 text-white px-4 py-2 rounded">See People</button>
-        {showPersons && <PersonDetails persons={persons} />}
+        {showPersons && <PersonDetails persons={persons!} />}
 
         <button onClick={onClose} className="mt-4 bg-blue-500 text-white px-4 py-2 rounded">Close</button>
       </div>
