@@ -10,6 +10,61 @@ NEXT_PUBLIC_SUPABASE_URL=
 NEXT_PUBLIC_SUPABASE_ANON_KEY=
 ```
 
+## Endpoints
+```GET /companies```: 
+Returns a list of Company objects
+
+```
+Company = {
+    company_id: string,
+    company_name: string,
+    head_count: number, // calculated
+    job_postings: number, // calculated
+    addressable_company_Name: string,
+    website: string,
+    company_linkedin_url: string,
+    company_linkedin_id: string,
+    num_employees_on_linkedin: number,
+    size: string,
+    industry: string,
+    city?: string,
+    state?: string,
+    country: string,
+}
+```
+```GET /companies/:id```
+Returns a single Company object
+
+```GET /companies/:id/persons```
+Returns a list of Person objects given a companyId
+
+``` 
+Person = {
+    first_name: string,
+    last_name: string,
+    title: string,
+    persona_type: string,
+    persona_match_score: number,
+    persona_linkedin_url: string,
+    in_job_since: string,
+    timezone?: string,
+    member_state?: string,
+    member_country: string
+}
+```
+
+```GET /companies/:id/jobPostings```
+Returns a list of JobPosting objects given a companyId
+
+```
+JobPosting = {
+    job_type: string,
+    matching_context: JSON,
+    title: string,
+    url: string
+}
+```
+
 ## Getting Started
 
 First, run the development server:
