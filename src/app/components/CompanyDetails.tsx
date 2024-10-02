@@ -1,7 +1,6 @@
 // Sidebar.js
 import React, { useState } from 'react';
 import { Person } from '../types';
-import Person from './PersonDetails';
 import PersonDetails from './PersonDetails';
 import ArrowRight from './ArrowRight';
 
